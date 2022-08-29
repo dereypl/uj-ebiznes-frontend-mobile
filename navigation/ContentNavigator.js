@@ -2,6 +2,7 @@ import * as React from 'react';
 import {createBottomTabNavigator} from "@react-navigation/bottom-tabs";
 import {MaterialIcons} from "@expo/vector-icons";
 import ProductsListScreen from "../screens/products/list/ProductsListScreen";
+import BasketListScreen from "../screens/basket/list/BasketListScreen";
 
 const Tabs = createBottomTabNavigator();
 function Navigator() {
@@ -13,11 +14,11 @@ function Navigator() {
                     let iconName;
                     switch (route.name){
                         case 'Produkty': {
-                            iconName = focused ? 'date-range': 'date-range';
+                            iconName = focused ? 'format-list-bulleted': 'format-list-bulleted';
                             break;
                         }
                         case 'Koszyk': {
-                            iconName = focused ? 'format-list-bulleted': 'format-list-bulleted';
+                            iconName = focused ? 'shopping-cart': 'shopping-cart';
                             break;
                         }
                         default: break;
@@ -36,7 +37,7 @@ function Navigator() {
             }}
         >
             <Tabs.Screen name="Produkty" component={ProductsListScreen}/>
-            <Tabs.Screen name="Koszyk" component={ProductsListScreen} />
+            <Tabs.Screen name="Koszyk" component={BasketListScreen} />
         </Tabs.Navigator>
     );
 }

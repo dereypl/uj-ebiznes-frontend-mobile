@@ -47,7 +47,7 @@ const ProductsListScreen = ({navigation}) => {
                 renderItem={itemData => (
                     <ProductListItem
                         data={itemData.item}
-                        onSelect={() => null}
+                        navigation={navigation}
                     />
                 )}
             />

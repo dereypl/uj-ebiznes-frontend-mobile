@@ -1,16 +1,13 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
-import {addToBasket} from "../../basket/basketReducer";
 import {useDispatch} from "react-redux";
+import {removeFromBasket} from "../basketReducer";
 
-const ProductListItem = ({data, navigation}) => {
+const BasketListItem = ({data}) => {
     const dispatch = useDispatch()
-    const handleAddToBasket = () => {
-        dispatch(addToBasket(data))
-        navigation.navigate('Koszyk')
-    }
+    const handleRemoveProduct = () => dispatch(removeFromBasket(data.id))
     return (
-        <TouchableOpacity style={styles.item} activeOpacity={1} onPress={handleAddToBasket}>
+        <TouchableOpacity style={styles.item} activeOpacity={1} onPress={handleRemoveProduct}>
             <View style={styles.content}>
                 <View style={styles.product}>
                     <Text style={styles.productName}>{data.name}</Text>
@@ -30,7 +27,7 @@ const ProductListItem = ({data, navigation}) => {
                     <Text style={styles.price}>{data.price.toFixed(2)}</Text>
                     <Text style={styles.currency}>zł</Text>
                 </View>
-                <Text style={styles.detailsText}>Dodaj do koszyka ></Text>
+                <Text style={styles.detailsText}>Usuń produkt ></Text>
             </View>
         </TouchableOpacity>
     );
@@ -114,4 +111,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default ProductListItem;
+export default BasketListItem;
